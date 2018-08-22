@@ -1,0 +1,3 @@
+Die Sockets blockieren, dh die Loops die die recv durchgehen sind endlos lange offen und beeenden nicht.
+settimeout funktioniert nicht, weil dann die ganze Verbindung abgebrochen wird und das Programm beendet, muss noch setblocking oder so suchen. Bzw andere Art
+finden den Bytestream abzurufen
