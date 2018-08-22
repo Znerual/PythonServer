@@ -29,9 +29,8 @@ class ClientThread(Thread):
         text = recv_encrypted_text(client_serving_socket, session_key)
         print(text)
 
+        #beende den Server als ganzes, kann später durch Befehl ausgetauscht werden
+        self.running_event.set()
         #beende die Verbindung
         client_serving_socket.close()
         del client_serving_socket
-
-        #beende den Server als ganzes, kann später durch Befehl ausgetauscht werden
-        self.running_event.set()
