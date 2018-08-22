@@ -9,7 +9,7 @@ server_socket.bind((socket.gethostbyname(socket.gethostname()), 5555))
 while True:
     state = 0
     private_key, public_key = generate_keyset()
-    
+
     #Verbinde mit Clienten und erhalten den Socket
     server_socket.listen(5)
     client_serving_socket, addr = server_socket.accept()
@@ -22,7 +22,7 @@ while True:
     print(keyData)
 
     #Sende Nachricht und warte auf Antwort
-    message = encrypt_session("Hey du", client_public_key)
+    session_key, message = encrypt_session("Hey du", client_public_key)
     send_data(pickle.dumps(message), client_serving_socket)
     print("Nachricht gesendet")
 
