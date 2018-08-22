@@ -4,11 +4,12 @@ from protocoll import send_data, recv_data, recv_text, recv_encrypted_text
 
 
 class ClientThread(Thread):
-    def __init__(self, socket, addr):
+    def __init__(self, socket, addr, running_event):
         Thread.__init__(self)
         self.socket = socket
         self.addr = addr
         self.VERSION_NUMBER = 1
+        self.running_event = running_event
         print("Client connected")
     def run(self):
         print("started")
@@ -31,3 +32,6 @@ class ClientThread(Thread):
         #beende die Verbindung
         client_serving_socket.close()
         del client_serving_socket
+
+        #beende den Server als ganzes, kann später durch Befehl ausgetauscht werden
+        self.running_event.set()
