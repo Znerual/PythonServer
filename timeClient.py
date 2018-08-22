@@ -1,4 +1,5 @@
 import socket
+import ClientServingThread
 from encryption import generate_keyset, decrypt_session, encrypt_session
 from protocoll import send_data, recv_data, send_text, send_text_encrypted
 
