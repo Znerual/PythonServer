@@ -1,7 +1,12 @@
 import socket
-import pickle
 from encryption import generate_keyset, decrypt_session, encrypt_session
-from protocoll import send_data, recv_data, send_text
+from protocoll import send_data, recv_data, send_text, send_text_encrypted
+
+VERSION_NUMBER = 1
+
+def checkVersion(versionNumber):
+    if (versionNumber < VERSION_NUMBER):
+        print("Bitte updaten")
 
 server_addr = (socket.gethostbyname(socket.gethostname()), 5555)
 #connect to the server
@@ -14,12 +19,12 @@ private_key, public_key = generate_keyset()
 #send the public key to the server
 send_data(public_key, client_socket)
 
-#wait for encrypted response
+#wait for encrypted response with the server Version number
 messageData = recv_data(client_socket)
-enc_message = pickle.loads(messageData)
-message, session_key = decrypt_session(enc_message, private_key)
-print(message)
+version, session_key = decrypt_session(messageData, private_key)
+checkVersion(version)
+print(version)
 
-send_text("Funktioniert", client_socket)
+send_text_encrypted("Funktioniert", client_socket, session_key)
 client_socket.close()
 del client_socket
