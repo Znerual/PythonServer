@@ -3,3 +3,4 @@ settimeout funktioniert nicht, weil dann die ganze Verbindung abgebrochen wird u
 finden den Bytestream abzurufen
 git eingerichtet
 Git setup unter linux too
+Nachgelesen, muss ein Protokoll implementieren, das eine fixe Messagelengh annimmt, oder mitteilt wie lang die Nachricht wird.
