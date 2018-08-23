@@ -16,10 +16,6 @@ server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_socket.bind((socket.gethostbyname(socket.gethostname()), 5555))
 log.debug("Serversocket auf Port 5555 erstellt und Verbunden")
 
-#Generiere die RSA Keys
-private_key, public_key = generate_keyset()
-log.debug("RSA Keys generiert")
-
 #Korrektes beenden und schließen der Sockets, event verknüpfen
 running_event = Event()
 
@@ -52,7 +48,7 @@ while running:
         client_serving_thread.start()
 
         #Überprüft ob der Tocher-Thread das Event gesetzt hat
-        log.debug("Verbungen und Thread gestartet")
+        log.info("Verbungen und Thread gestartet mit " + str(addr[0]) + " " + str(addr[1]))
 
 
 

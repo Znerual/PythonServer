@@ -11,6 +11,11 @@ def send_text(text, usocket):
     data = text.encode("utf8")
     send_data(data, usocket)
 
+def send_validation_encrypted(usocket, session_key, validate=True):
+    if validate:
+        send_text_encrypted("valid", usocket, session_key)
+    else:
+        send_text_encrypted("error", usocket, session_key)
 def send_text_encrypted(text, usocket, session_key):
     enc_data = encrypt_text(text, session_key)
     send_data(enc_data, usocket)
@@ -40,3 +45,9 @@ def recv_encrypted_text(usocket, session_key):
     enc_text = recv_data(usocket)
     text = decrypt_text(enc_text, session_key)
     return text
+def recv_validation_encrypted(usocket, session_key):
+    validation = recv_encrypted_text(usocket, session_key)
+    if validation == "valid":
+        return True
+    else:
+        return False
