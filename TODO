@@ -4,3 +4,5 @@ finden den Bytestream abzurufen
 git eingerichtet
 Git setup unter linux too
 Nachgelesen, muss ein Protokoll implementieren, das eine fixe Messagelengh annimmt, oder mitteilt wie lang die Nachricht wird.
+Command file mit befehlen
+Logging überall

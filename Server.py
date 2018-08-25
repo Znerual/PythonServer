@@ -2,7 +2,7 @@ import socket
 import logging
 from threading import Event
 from encryption import generate_keyset, encrypt_session, decrypt_session
-from protocoll import send_data, recv_data, recv_text, recv_encrypted_text
+from protocoll import send_data, recv_data, recv_text, recv_text_encrypted
 from ClientServingThread import ClientThread
 
 #Logging Format erstellen, gibt Zeit und Nachricht aus

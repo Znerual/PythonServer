@@ -54,8 +54,8 @@ class ClientThread(Thread):
         self.log.debug("Salt gesendet")
 
         #Empfange den Passwort hash und überprüfe ihn
-        pwd_hash = recv_encrypted_data(client_serving_socket, session_key)
-        
+        pwd_hash = recv_data_encrypted(client_serving_socket, session_key)
+
         saved_pwd_hash = load_hash()
         if not bytes(saved_pwd_hash) == bytes(pwd_hash):
             self.log.info("Falsches Passwort eingegeben " + str(pwd_hash))

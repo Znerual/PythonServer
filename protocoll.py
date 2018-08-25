@@ -37,16 +37,16 @@ def recv_data(usocket):
 def recv_text(usocket):
     data = recv_data(usocket)
     return str(data,"utf8")
-def recv_encrypted_data(usocket, session_key):
+def recv_data_encrypted(usocket, session_key):
     enc_data = recv_data(usocket)
     data = decrypt_data(enc_data, session_key)
     return data
-def recv_encrypted_text(usocket, session_key):
+def recv_text_encrypted(usocket, session_key):
     enc_text = recv_data(usocket)
     text = decrypt_text(enc_text, session_key)
     return text
 def recv_validation_encrypted(usocket, session_key):
-    validation = recv_encrypted_text(usocket, session_key)
+    validation = recv_text_encrypted(usocket, session_key)
     if validation == "valid":
         return True
     else:

@@ -34,7 +34,7 @@ print(version)
 send_validation_encrypted(client_socket, session_key)
 print("Send validation")
 #wait for Password Salt
-salt = recv_encrypted_data(client_socket, session_key)
+salt = recv_data_encrypted(client_socket, session_key)
 print("Got salt" + str(salt,"utf8"))
 #input password from user, for debugging we skip over this step
 password = "1234"
